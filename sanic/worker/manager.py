@@ -178,4 +178,10 @@ class WorkerManager:
             for worker_state in self.worker_state.values()
             if worker_state.get("server")
         ]
+        logger.info(
+            'Wroker Acknowledge logger-->>>>>>>: %s', {
+                'worker_state': self.worker_state, 'numserver': self.num_server,
+                'ackedname': ProcessState.ACKED.name, 'acked': acked
+            }
+        )
         return all(acked) and len(acked) == self.num_server
